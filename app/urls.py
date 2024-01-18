@@ -5,5 +5,5 @@ app_name = 'twitter'
 
 urlpatterns = [
     path('', index_view, name='home'),
-    path('form/', form_view, name='form'),
+    path('form', form_view, name='form'),
 ]
