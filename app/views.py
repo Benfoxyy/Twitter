@@ -1,9 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Twitt
+from .forms import TwittForm
 
 def index_view(request):
+    if request.method == 'POST':
+        form = TwittForm(request.POST or None)
+        if form.is_valid():
+            obj=form.save(commit=False)
+            obj.auth = request.user
+            print('hello')
+            obj.save()
+            return redirect('/')
     twitts = Twitt.objects.filter(checked = True)
-    return render(request, 'index-mainpage.html',{'twitts':twitts})
-
-def form_view(request):
-    return render(request, 'index-addpostpage.html')
+    form = TwittForm()
+    return render(request, 'indexMane.html',{'twitts':twitts,'form':form})
