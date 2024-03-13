@@ -20,12 +20,14 @@
     <div
       class="d-flex justify-content-start flex-column px-4 py-5 rounded"
       style="width: 400px; height: 470px; background-color: #5b5b5bf5">
+      <form method="post">{% csrf_token %}
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label"
-          >Email address</label
+          >Usernmae</label
         >
         <input
-          type="email"
+          name="username"
+          type="username"
           class="form-control w-100"
           id="exampleFormControlInput1"
           placeholder="name@example.com" />
@@ -35,29 +37,32 @@
           >Your Password</label
         >
         <input
-          type="email"
+          name="password1"
+          type="password"
           class="form-control w-100"
           id="exampleFormControlInput1"
           placeholder="1234" />
       </div>
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label"
-          >Your UserName</label
+          >Password confirmation</label
         >
         <input
-          type="email"
+          name="password2"
+          type="password"
           class="form-control w-100"
           id="exampleFormControlInput1"
-          placeholder="Benyamin medghalchi" />
+          placeholder="1234" />
       </div>
       <br />
       <div class="d-flex justify-content-center">
         <button class="btn btn-primary btn-md">SignUp your new account</button>
       </div>
+      </form>
       <br/>
       <br/>
       <div class="text-sm text-center">
-        if you have account  <a href="index.login.html" class="text-primary">log in</a>
+        if you have account  <a href="{% url 'login' %}" class="text-primary">log in</a>
       </div>
 
     <script
